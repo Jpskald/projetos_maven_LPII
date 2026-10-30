@@ -6,6 +6,11 @@ import model.Contato;
 public class ContatoDao {
 	private EntityManager em; //conexao
 	
+	public ContatoDao(EntityManager em)
+	{
+		this.em = em;
+	}
+	
 	public void cadastrar(Contato cont)
 	{
 		em.getTransaction().begin();
@@ -27,4 +32,5 @@ public class ContatoDao {
 		em.remove(cont);
 		em.getTransaction().commit();
 	}
+	
 }
