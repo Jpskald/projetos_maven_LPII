@@ -9,8 +9,8 @@
         <!-- Provedor oficial do Hibernate para Jakarta Persistence -->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         
-		<class>modelo.Contato</class>
-		<class>modelo.Categoria</class>
+        
+		<class>model.Contato</class>
 		
         <properties>
             <!-- Conexão JDBC MySQL -->
