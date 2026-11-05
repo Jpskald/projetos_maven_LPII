@@ -42,6 +42,17 @@ public class ContatoDao {
 		return em.find(Contato.class, Id);
 	}
 	
+	public List <String> buscarPorNome(String nome)
+	{
+		String jpql = "SELECT c.nome FROM Contato c WHERE c.nome LIKE :param_nome";
+		return em.createQuery(jpql, String.class).setParameter("param_nome", nome).getResultList();
+	}
+	public String buscarPorEmail(String nome)
+	{
+		String jpql = "SELECT c FROM Contato c WHERE c.email = :param_nome";
+		return em.createQuery(jpql, String.class).setParameter("param_email", nome).getSingleResult();
+	}
+	
 	public List<Contato> buscarTodos()
 	{
 		String jpql = "SELECT c FROM Contato c";
@@ -58,7 +69,11 @@ public class ContatoDao {
 		
 		//Contato c = dao.buscarPorId(1);
 		//System.out.println(c.toString());
-		List<Contato> lista = dao.buscarTodos();
+		//List<Contato> lista = dao.buscarTodos();
+		List<String> lista = dao.buscarPorNome("%se%");
 		System.out.println(lista);
+		System.out.println("----------------");
+		String email = dao.buscarPorEmail("maria@gmail.com");
+		System.out.println(email);
 	}
 }

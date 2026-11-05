@@ -13,7 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
+// Apagar o getter, setter, allargsconstructor e noargsconstructor e fazer os métodos padrão caso não tenha o lombok (ou se em uma máquina não configurada
 @Getter
 @Setter
 @AllArgsConstructor
