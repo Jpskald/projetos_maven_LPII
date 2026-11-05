@@ -3,8 +3,6 @@ package TESTES;
 import java.time.LocalDate;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import model.Contato;
 import utils.JPAUtils;
 

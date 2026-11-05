@@ -11,6 +11,7 @@
         
         
 		<class>model.Contato</class>
+		<class>model.Produto</class>
 		
         <properties>
             <!-- Conexão JDBC MySQL -->

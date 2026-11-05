@@ -1,6 +1,7 @@
 package dao;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.EntityManager;
 import model.Contato;
@@ -17,29 +18,47 @@ public class ContatoDao {
 	public void cadastrar(Contato cont)
 	{
 		em.getTransaction().begin();
-		em.persist(cont);
+		em.persist(cont); //insert
 		em.getTransaction().commit();
 	}
 	
 	public void alterar(Contato cont)
 	{
 		em.getTransaction().begin();
-		em.merge(cont);
+		em.merge(cont); // update
 		em.getTransaction().commit();
 	}
 	
 	public void excluir(int id)
 	{
 		em.getTransaction().begin();
-		Contato cont = em.find(Contato.class, id);
-		em.remove(cont);
+		Contato cont = em.find(Contato.class, id); //select
+		em.remove(cont); //delete
 		em.getTransaction().commit();
 	}
+	
+	public Contato buscarPorId(int Id)
+	{
+		return em.find(Contato.class, Id);
+	}
+	
+	public List<Contato> buscarTodos()
+	{
+		String jpql = "SELECT c FROM Contato c";
+		return em.createQuery(jpql, Contato.class).getResultList();
+	}
+
 	public static void main(String[] args) {
 		ContatoDao dao = new ContatoDao(JPAUtils.getEntityManager());
-		Contato contato = new Contato(7, "zezin", "1111-1112", "zezin@gmail.com", LocalDate.of(2004, 7, 17));
-
+		//Contato contato = new Contato(null, "lucas", "1111-1122", "lucas@gmail.com", LocalDate.of(2002, 4, 10));
+		//dao.cadastrar(contato); insert
+		//Contato contato = new Contato(7, "lucas", "1111-1122", "lucasalgumacoisa@gmail.com", LocalDate.of(2002, 4, 10));
+		//dao.alterar(contato); // update
+		//dao.excluir(7);
 		
-		dao.cadastrar(contato);
+		//Contato c = dao.buscarPorId(1);
+		//System.out.println(c.toString());
+		List<Contato> lista = dao.buscarTodos();
+		System.out.println(lista);
 	}
 }
